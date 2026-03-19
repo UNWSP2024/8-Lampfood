@@ -1,23 +1,30 @@
-# Program #2: Word Separator
-# Write a program that accepts as input a sentence in which all of the words are run together, 
-# but the first character of each word is uppercase.  
-# Convert the sentence to a string in which the words are separated by spaces, 
-# and the first word starts with an uppercase.  
-# For example the string "StopAndSmellTheRoses" would be converted to "Stop and smell the roses."
+#Elliott Morris, 3/14/2026, Word Seperator.py
 
-# Start your changes on line 13
+def main():
+    try:
+        #Get user input
+        camel_case = input("Enter a camel case string: ").strip()
 
-def word_separator(sentence):
+        #check that input is not empty
+        if not camel_case:
+            print("Input cannot be empty")
 
-    new_sentence = ""
-    #    Add your logic here
+        else:
+            sentence = ""
+            for i, char in enumerate(camel_case):
+                #If character is uppercase and not first letter add a space
+                if char.isupper() and i !=0: #only add space on not the first letter
+                    sentence += " " + char.lower()
+                else :
+                    sentence += char
 
-    return new_sentence.strip()
+        #fix formatting
+        sentence = sentence[0].upper() + sentence[1:] + "."
 
-# Example usage
-if __name__=="__main__":
-    sentence = "StopAndSmellTheRoses"
+        print(sentence)
 
-    new_sentence = word_separator(sentence)
+    except Exception as e:
+        print("An error occurred:", e)
 
-    print(new_sentence)
+if __name__ == "__main__":
+    main()
